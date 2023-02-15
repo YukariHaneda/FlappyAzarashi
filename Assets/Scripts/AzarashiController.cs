@@ -7,11 +7,16 @@ public class AzarashiController : MonoBehaviour
     Rigidbody2D rb2d;
     Animator animator;
     float angle;
+    bool isDead;
 
     public float maxHeight;
     public float flapVelocity;
     public float relativeVelocityX;
     public GameObject sprite;
+
+    public bool IsDead() {
+        return isDead;
+    }
 
     void Awake() {
         rb2d = GetComponent<Rigidbody2D>();
