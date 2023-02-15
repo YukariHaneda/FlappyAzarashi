@@ -11,7 +11,7 @@ public class AzarashiController : MonoBehaviour
 
     public float maxHeight;
     public float flapVelocity;
-    public float relativeVelocityX;
+    public float relativeVelocityX; //見かけの速度（地面が動いていることを考慮して）
     public GameObject sprite;
 
     public bool IsDead() {
@@ -48,6 +48,9 @@ public class AzarashiController : MonoBehaviour
         //死んだらはばたけない
         if (isDead) return;
 
+        // 重力が効いているときは操作しない
+        if(rb2d.isKinematic ) return;
+
         // Velocityを直接置き換えて上方向に加速
         rb2d.velocity = new Vector2(0.0f, flapVelocity);
     }
@@ -75,5 +78,10 @@ public class AzarashiController : MonoBehaviour
 
         //何かぶつかったら死亡フラグをたてる
         isDead = true;
+    }
+
+    public void SetSteerActive(bool active) {
+        //Rightbodyのオン、オフを切り替える
+        rb2d.isKinematic = !active;
     }
 }

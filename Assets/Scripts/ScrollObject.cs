@@ -25,11 +25,14 @@ public class ScrollObject : MonoBehaviour
     }
 
     void ScrollEnd() {
-        //通りすぎた分を加味してポジションを再設定
+        //通りすぎた分を加味してポジションを再設定 
+        
         float diff = transform.position.x - endPosition;
         Vector3 restartPosition = transform.position;
         restartPosition.x = startPosition + diff;
         transform.position = restartPosition;
+        
+        // transform.position = (transform.position.x +16f,transform.position.y,transform.position.z)
 
         //同じゲームオブジェクトにアタッチされているコンポーネントにメッセージを送る
         SendMessage("OnScrollEnd", SendMessageOptions.DontRequireReceiver);
