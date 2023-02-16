@@ -76,6 +76,9 @@ public class AzarashiController : MonoBehaviour
     void OnCollisionEnter2D(Collision2D collision) {
         if(isDead) return;
 
+        //クラッシュエフェクト
+        Camera.main.SendMessage("Clash");
+
         //何かぶつかったら死亡フラグをたてる
         isDead = true;
     }

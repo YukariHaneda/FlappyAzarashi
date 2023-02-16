@@ -23,7 +23,7 @@ public class Block : MonoBehaviour
     }
 
     //ScrollObjectスクリプトからのメッセージを受け取って高さを変更
-    void OnScrollEnd() {
+    void OnScrollEnd() {//自分自身が動かすのでpublicの必要性はなし
         ChangeHeight();
     }
 
